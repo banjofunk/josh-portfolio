@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import Prism from 'prismjs';
-import { JoshGuy } from './components/JoshGuy';
-import { Monitor } from './components/Monitor';
+// https://fullscale.io/blog/11-best-it-recruiters-in-denver-colorado/
+// import { JoshGuy } from './components/JoshGuy';
 
 import './App.css';
 import './prism.css';
@@ -55,7 +55,7 @@ const App = () => {
       Prism.highlightElement(codeStr1.current);
     }
 
-    if (percent < 3.1) {
+    if (codeStr2.current && percent < 3.1) {
       const adjPercent = percent - 2 < 0 ? 0 : percent - 2;
       const val = Math.ceil(JSCode.length * adjPercent);
       codeStr2.current.innerHTML = escapeStr(JSCode.slice(0, val));
@@ -73,20 +73,15 @@ const App = () => {
   return (
     <div ref={scrollContainerRef} className="w-full h-screen overflow-scroll">
       <div style={{ height: '400vh' }} className="w-full min-h-screen ">
-        <div className="sticky top-0 w-full h-screen flex items-center justify-center bg-blue-900">
-          <JoshGuy className="h-40" />
-          <div className="w-full max-w-screen-sm h-96 relative">
-            <Monitor className="absolute w-full h-full fill-gray-400 stroke-gray-900" />
-            <div className="w-full h-full py-8 px-4 md:px-8">
-              <Code codeRef={codeStr1} language="javascript" />
+        <div className="sticky top-0 w-full h-screen flex items-center justify-center bg-sky-500">
+          <div className="flex-1 h-full flex flex-col p-8">
+            <div className="w-full max-w-sm flex flex-col space-y-1 font-serif text-right">
+              <h1 className="text-7xl text-gray-800 font-medium">josh garner</h1>
+              <h2 className="text-4xl text-gray-800 pr-2">full stack developer</h2>
             </div>
           </div>
-        </div>
-        <div className="h-screen" />
-
-        <div className="sticky top-0 w-full h-screen flex items-center justify-center bg-red-900">
-          <div className="rounded bg-white w-full max-w-screen-md h-72">
-            <Code codeRef={codeStr2} language="javascript" />
+          <div className="w-full max-w-screen-sm h-full">
+            <Code codeRef={codeStr1} language="javascript" />
           </div>
         </div>
       </div>
@@ -96,7 +91,7 @@ const App = () => {
 
 const Code = ({ codeRef, language }) => (
   <div className="w-full h-full">
-    <pre className="bg-gray-800 border-gray-900 border-2 m-0 code-block rounded text-white w-full h-full">
+    <pre className="bg-gray-800 m-0 code-block text-white w-full h-full">
       <code ref={codeRef} className={`language-${language} w-full`} />
     </pre>
   </div>

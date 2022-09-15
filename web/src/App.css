@@ -7,7 +7,7 @@
 }
 
 pre.code-block[class*=language-] {
-  @apply bg-gray-800 m-0 p-7
+  @apply bg-sky-800 m-0 p-7
 }
 
 .App-logo {

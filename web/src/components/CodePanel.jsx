@@ -2,20 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import Prism from 'prismjs';
 import { animated, useSpring, useSpringRef } from 'react-spring';
 
-const jsCode = `const App = props => {
-      return (
-        <div>
-          <h1>Josh & React JS</h1>
-          <div>
-            <h2>Tailwind CSS</h2>
-            <h2>react-spring</h2>
-            <h2>lottie</h2>
-          </div>
-        </div>
-      );
-    };
-    `;
-
 const escapeStr = (str) =>
   str
     .replace(/&/g, '&amp;')
@@ -24,7 +10,7 @@ const escapeStr = (str) =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 
-export const CodePanel = ({ scrollContainerRef, language, max, min = 0, children }) => {
+export const CodePanel = ({ scrollRef, language, snippet, max, min = 0, children }) => {
   const codeStr1 = useRef();
   const springRef = useSpringRef();
 
@@ -35,19 +21,19 @@ export const CodePanel = ({ scrollContainerRef, language, max, min = 0, children
 
     if (percent < max) {
       const adjPercent = percent - min < 0 ? 0 : percent - min;
-      const val = Math.ceil(jsCode.length * adjPercent);
-      codeStr1.current.innerHTML = escapeStr(jsCode.slice(0, val));
+      const val = Math.ceil(snippet.length * adjPercent);
+      codeStr1.current.innerHTML = escapeStr(snippet.slice(0, val));
       springRef.start({ opacity: 0 });
       Prism.highlightElement(codeStr1.current);
     } else {
-      codeStr1.current.innerHTML = escapeStr(jsCode);
+      codeStr1.current.innerHTML = escapeStr(snippet);
       springRef.start({ opacity: 1 });
       Prism.highlightElement(codeStr1.current);
     }
   };
 
   useEffect(() => {
-    const ref = scrollContainerRef.current;
+    const ref = scrollRef.current;
     ref.addEventListener('scroll', listener);
     return () => {
       ref.removeEventListener('scroll', listener);
@@ -58,7 +44,7 @@ export const CodePanel = ({ scrollContainerRef, language, max, min = 0, children
 
   return (
     <div className="flex-1 flex items-center justify-center">
-      <div className="w-full lg:max-w-screen-md 2xl:max-w-xl h-96 overflow-visible relative bg-gray-800 flex items-center justify-center">
+      <div className="w-full lg:max-w-screen-md 2xl:max-w-xl h-80 lg:h-96 overflow-visible relative bg-gray-800 flex items-center justify-center">
         <div className="absolute w-full top-0">
           <pre className="bg-gray-800 m-0 code-block text-white w-full h-full">
             <code ref={codeStr1} className={`language-${language} w-full`} />

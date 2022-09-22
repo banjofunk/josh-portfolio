@@ -1,10 +1,12 @@
 import { SiGithub } from 'react-icons/si';
 
-export const GitRepoCard = ({ title, icons, link, description }) => (
+export const GitRepoCard = ({
+  title, icons, link, description,
+}) => (
   <div className="w-full h-full flex flex-col items-center justify-center rounded-md bg-sky-900">
-    <div className="w-full h-12 bg-sky-600 rounded-t-md flex justify-evenly items-center text-white">
+    <div className="w-full h-12 bg-sky-600 rounded-t-md hidden lg:flex justify-evenly items-center text-white">
       {icons.map((Icon) => (
-        <Icon className="text-white h-5 w-5" />
+        <Icon key={Icon.constructor?.name} className="text-white h-5 w-5" />
       ))}
     </div>
     <div className="w-full flex-1 flex flex-col space-y-2 p-4">
@@ -16,7 +18,7 @@ export const GitRepoCard = ({ title, icons, link, description }) => (
         <button
           type="button"
           onClick={() => window.open(link)}
-          className="w-full flex justify-center space-x-3 rounded bg-sky-600 px-4 py-2 shadow hover:shadow-md hover:opacity-90"
+          className="w-full hidden lg:flex justify-center space-x-3 rounded bg-sky-600 px-4 py-2 shadow hover:shadow-md hover:opacity-90"
         >
           <SiGithub className="text-white w-6 h-6" />
           <span className="text-white text-lg font-medium">View on GitHub</span>

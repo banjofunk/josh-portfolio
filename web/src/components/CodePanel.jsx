@@ -52,7 +52,7 @@ export const CodePanel = ({
             <code ref={codeStr1} className={`language-${language} w-full`} />
           </pre>
         </div>
-        <animated.div style={style} className="absolute top-0 w-full h-full rounded-lg bg-white p-2">
+        <animated.div style={style} className="absolute top-0 w-full h-full rounded-lg bg-white p-1 lg:p-2">
           {children}
         </animated.div>
       </div>

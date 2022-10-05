@@ -6,7 +6,7 @@ export const GitRepoCard = ({
   <div className="w-full h-full flex flex-col items-center justify-center rounded-md bg-sky-900">
     <div className="w-full h-12 bg-sky-600 rounded-t-md hidden lg:flex justify-evenly items-center text-white">
       {icons.map((Icon) => (
-        <Icon key={Icon.constructor?.name} className="text-white h-5 w-5" />
+        <Icon key={Icon?.name} className="text-white h-5 w-5" />
       ))}
     </div>
     <div className="w-full flex-1 flex flex-col space-y-2 py-0 lg:py-4 px-4">

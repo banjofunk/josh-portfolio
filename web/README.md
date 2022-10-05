@@ -2,7 +2,13 @@
 
 Joshs portfolio is built in React with tailwind
 
-## Portfolio Repos
+## notes
+
+- title text
+- contact buttons
+- code blocks
+- mobile card views
+- xd resume update
 
 Graphql - Geo Agg Resolver
 Graphql - Recursive Key Agg Resolver

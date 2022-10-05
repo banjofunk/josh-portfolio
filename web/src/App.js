@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { animated, useSpring, useSpringRef } from 'react-spring';
+import { BiChevronDown } from 'react-icons/bi';
 import {
   SiTailwindcss, SiAwsamplify, SiReact, SiGraphql, SiAmazonaws, SiServerless, SiAmazons3,
 } from 'react-icons/si';
@@ -8,8 +9,9 @@ import { snippets } from './snippets';
 
 const App = () => {
   const scrollRef = useRef();
-  const infoRef = useRef();
   const springRef = useSpringRef();
+  const titleSpringRef = useSpringRef();
+  const secondarySpringRef = useSpringRef();
 
   const listener = (e) => {
     const { height } = e.target.getBoundingClientRect();
@@ -20,6 +22,15 @@ const App = () => {
     const opacity = (revealDur - remaining) / revealDur;
 
     springRef.start({ opacity });
+    secondarySpringRef.start({
+      opacity: remaining ? 0 : 1,
+      delay: remaining ? 0 : 200,
+      immediate: !!remaining,
+    });
+    titleSpringRef.start({
+      opacity: top ? 0 : 1,
+      delay: top ? 0 : 200,
+    });
   };
 
   useEffect(() => {
@@ -31,12 +42,29 @@ const App = () => {
   });
 
   const style = useSpring({ opacity: 0, ref: springRef });
+  const titleStyle = useSpring({ opacity: 1, ref: titleSpringRef });
+  const secondaryStyle = useSpring({ opacity: 0, ref: secondarySpringRef });
 
   return (
     <div ref={scrollRef} className="w-full h-screen overflow-scroll">
       <div style={{ height: '550vh' }} className="relative w-full min-h-screen">
         <div className="sticky top-0 w-full h-screen min-h-screen flex items-center justify-center bg-gray-800 shadow-lg">
           <div className="flex-1 h-full flex flex-col items-center py-2 lg:py-4 px-4">
+            <animated.div style={titleStyle} className="z-50 w-screen h-0 overflow-visible pointer-events-none">
+              <div className="z-30 h-screen w-full flex items-center justify-center">
+                <div style={{ backgroundImage: 'radial-gradient(var(--tw-gradient-stops))' }} className="rounded-full bg-transparent from-sky-900 via-gray-800 to-gray-800 text-center p-44">
+                  <div className="w-96 h-96 flex flex-col items-center justify-center">
+
+                    <blockquote className="p-4 italic text-white quote text-xl opacity-75">
+                      <p>Check out what Josh has been working on lately</p>
+                    </blockquote>
+                    <div className="h-0 overflow-visible opacity-25">
+                      <BiChevronDown className=" mt-8 text-white w-10 h-10" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </animated.div>
             <PageHeader />
             <div className="w-full flex-1 flex lg:items-center justify-center max-w-screen-2xl">
               <div className="w-full flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 space-x-0 2xl:space-x-4 2xl:-mt-44">
@@ -46,25 +74,25 @@ const App = () => {
                       title="React - TailwindCSS"
                       link="https://github.com/banjofunk/josh-portfolio"
                       icons={[SiReact, SiTailwindcss, SiAwsamplify]}
-                      description="The carbon in our apple pies inconspicuous motes of rock and gas?"
+                      description="Here is the code for this very site! This page was written with ReactJS and TailwindCSS."
                     />
                   </CodePanel>
-                  <CodePanel className="z-20" language="javascript" snippet={snippets.amplify} scrollRef={scrollRef} min={1} max={2}>
+                  <CodePanel className="z-20" language="GraphQL" snippet={snippets.amplify} scrollRef={scrollRef} min={1} max={2}>
                     <GitRepoCard
-                      title="Amplify - GraphQL"
+                      title="Amplify - Appsync Resolvers"
                       link="https://github.com/banjofunk/josh-portfolio"
                       icons={[SiAwsamplify, SiAmazonaws, SiGraphql]}
-                      description="The ash of stellar alchemy dispassionate extraterrestrial observer network of wormholes decipherment."
+                      description="This repo contains several custom VTL resolvers including a geo indexing resolver (elasticsearch) and a gql subscription group auth strategy"
                     />
                   </CodePanel>
                 </div>
                 <div className="flex flex-col 2xl:flex-1 border-0">
-                  <CodePanel className="z-10" language="javascript" snippet={snippets.serverless} scrollRef={scrollRef} min={2} max={3}>
+                  <CodePanel className="z-10" language="YAML" snippet={snippets.serverless} scrollRef={scrollRef} min={2} max={3}>
                     <GitRepoCard
                       title="Serverless - CloudFormation"
                       link="https://github.com/banjofunk/josh-portfolio"
                       icons={[SiServerless, SiAmazons3, SiAmazonaws]}
-                      description="Bits of moving fluff two ghostly white figures in coveralls and helmets are softly dancing dispassionate extraterrestrial observer."
+                      description="This repo uses the serverless cli / CloudFormation to create various AWS resources and Lambdas"
                     />
                   </CodePanel>
                 </div>
@@ -73,18 +101,23 @@ const App = () => {
           </div>
         </div>
         <div className="absolute h-screen w-full bottom-0 bg-gray-800 shadow-2xl shadow-neutral-200 overflow-hidden from-sky-900 bg-gradient-to-b">
+          <div className="w-full h-0 overflow-visible">
+            <animated.div style={secondaryStyle} className="w-full p-4">
+              <PageHeader secondary />
+            </animated.div>
+          </div>
           <animated.div style={style} className="w-full h-full flex items-center justify-center p-4 opacity-0">
-            <div className="w-full max-w-sm sm:max-w-screen-sm lg:max-w-screen-md bg-white rounded-full shadow p-2">
-              <div className="w-full bg-sky-800 rounded-full p-4">
+            <div className="w-full max-w-sm sm:max-w-screen-sm lg:max-w-screen-md bg-white rounded-full shadow p-1">
+              <div className="w-full bg-sky-900 rounded-full p-4">
                 <div className="w-full flex flex-col space-y-6 py-6 items-center justify-center">
-                  <div className="w-full flex space-x-2 items-end justify-center">
-                    <div className="rounded-full w-20 h-20 overflow-hidden">
+                  <div className="w-full flex space-x-4 items-center justify-center">
+                    <div className="rounded-full w-20 h-20 border-2 border-white overflow-hidden">
                       <img src="/joshco.jpeg" alt="josh profile pic" className="w-full h-full" />
                     </div>
                     <div className="block">
-                      <p className="text-lg text-white  leading-snug">Josh Garner</p>
-                      <p className="text-lg text-white  leading-snug">full stack developer</p>
-                      <p className="text-lg text-white  leading-snug">your company here</p>
+                      <p className="text-lg text-white leading-snug">Josh Garner</p>
+                      <p className="text-sm text-gray-400 leading-snug">senior software engineer</p>
+                      <p className="text-sm text-sky-500 leading-snug">your company here</p>
                     </div>
                   </div>
                   <div className="border-b-2 border-sky-600 rounded w-full max-w-xs h-0" />
@@ -92,10 +125,10 @@ const App = () => {
 
                     <div className="flex flex-col space-y-2 items-center justify-center">
 
-                      <img src="/expectTech.png" alt="josh profile pic" className="w-44" />
+                      <img src="/expectTech.png" alt="josh profile pic" className="w-48" />
                       <div className="flex space-x-2">
-                        <p className="text-lg text-white  leading-snug">p: 123-123-1231</p>
-                        <p className="text-lg text-white  leading-snug">e: email@email.com</p>
+                        <p className="text-lg text-white">p: 123-123-1231</p>
+                        <p className="text-lg text-white">e: email@email.com</p>
                       </div>
                     </div>
                   </div>

@@ -10,7 +10,7 @@ const escapeStr = (str) => str
   .replace(/'/g, '&#039;');
 
 export const CodePanel = ({
-  scrollRef, language, snippet, max, min = 0, children, className,
+  scrollRef, snippet, max, min = 0, children, className,
 }) => {
   const codeStr1 = useRef();
   const springRef = useSpringRef();
@@ -18,7 +18,7 @@ export const CodePanel = ({
   const listener = (e) => {
     const { height } = e.target.getBoundingClientRect();
     const top = e.target.scrollTop;
-    const percent = Math.ceil((top / height) * 1000) / 1000;
+    const percent = Math.ceil((top / height) * 100000) / 100000;
 
     if (percent < max) {
       const adjPercent = percent - min < 0 ? 0 : percent - min;
@@ -45,14 +45,14 @@ export const CodePanel = ({
   const style = useSpring({ opacity: 0, ref: springRef });
 
   return (
-    <div className={`flex-1 flex items-center justify-center ${className}`}>
-      <div className="w-full lg:max-w-screen-md 2xl:max-w-xl h-40 lg:h-96 overflow-visible relative bg-gray-800 flex items-center justify-center">
+    <div className={`flex-1 flex items-center justify-center pointer-events-auto ${className}`}>
+      <div className="w-full lg:max-w-screen-md 2xl:max-w-xl h-40 lg:h-96 overflow-visible relative bg-gray-800 flex items-center justify-center pointer-events-auto">
         <div className="absolute w-full top-0">
           <pre className="bg-gray-800 m-0 code-block text-white w-full h-full">
-            <code ref={codeStr1} className={`language-${language} w-full`} />
+            <code ref={codeStr1} className="language-js w-full" />
           </pre>
         </div>
-        <animated.div style={style} className="absolute top-0 w-full h-full rounded-lg bg-white p-1 lg:p-2">
+        <animated.div style={style} className="absolute top-0 w-full h-full rounded-lg bg-white p-1">
           {children}
         </animated.div>
       </div>

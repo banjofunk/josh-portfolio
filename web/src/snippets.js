@@ -1,4 +1,8 @@
-const react = `const App = props => {
+const spacer = '\n\n\n\n\n';
+
+const react = `\
+// App.js
+const App = props => {
   return (
     <div>
       <h1>Josh & React JS</h1>
@@ -10,15 +14,27 @@ const react = `const App = props => {
     </div>
   );
 };
-`;
+${spacer}`;
 
-const amplify = `type ForecastRange {
-  max: String
-  min: String
+const amplify = `\
+# schema.graphql
+type ForecastResult {
+  adgroupType: String
+  reach: Int
+  salary: BigInt
 }
-`;
 
-const serverless = `test:
+type Forecast @aws_cognito_user_pools {
+  requestedAt: AWSTimestamp
+  createdAt: AWSTimestamp
+  impressions: Int
+  results: [ForecastResult]
+}
+${spacer}`;
+
+const serverless = `\
+# serverless.yml
+test:
   service: notifications
   variablesResolutionMode: 20210326
   projectDir: ../
@@ -28,11 +44,10 @@ const serverless = `test:
     - serverless-webpack
   provider:
     name: aws
-    runtime: nodejs14.x
+    runtime: "nodejs14.x"
     region: "us-east-1"
     stage: test
-
-`;
+${spacer}`;
 
 export const snippets = {
   react,

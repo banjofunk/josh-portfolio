@@ -24,7 +24,7 @@ const App = () => {
     springRef.start({ opacity });
     secondarySpringRef.start({
       opacity: remaining ? 0 : 1,
-      delay: remaining ? 0 : 200,
+      delay: remaining ? 0 : 100,
       immediate: !!remaining,
     });
     titleSpringRef.start({
@@ -32,6 +32,10 @@ const App = () => {
       delay: top ? 0 : 200,
     });
   };
+
+  const phone = window.atob('MzAzLTk0Ni0zNDM2');
+  const emailAddress = window.atob('Y2hyaXNAZXhwZWN0bGxjLmNvbQ==');
+  const emailLink = `mailto:${emailAddress}?subject=Interested in Josh Garner`;
 
   useEffect(() => {
     const ref = scrollRef.current;
@@ -128,9 +132,9 @@ const App = () => {
                     <div className="flex flex-col space-y-2 items-center justify-center">
 
                       <img src="/expectTech.png" alt="josh profile pic" className="w-48" />
-                      <div className="flex space-x-2">
-                        <p className="text-lg text-white">p: 123-123-1231</p>
-                        <p className="text-lg text-white">e: email@email.com</p>
+                      <div className="flex flex-col space-y-2 pt-2 text-left">
+                        <a href={`tel:${phone}`} className="text-lg text-white">{`p: ${phone}`}</a>
+                        <a href={emailLink} className="text-lg text-white">{`e: ${emailAddress}`}</a>
                       </div>
                     </div>
                   </div>

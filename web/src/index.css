@@ -109,15 +109,19 @@
   }
 }
 
+@layer components {
+  .bg-radial-gradient {
+    @apply w-full max-w-screen-lg aspect-square flex items-center justify-center rounded-full;
+    background-image: radial-gradient(var(--tw-gradient-stops));
+  }
+}
+
 pre.code-block[class*=language-] {
   @apply bg-gray-800 m-0 p-7
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

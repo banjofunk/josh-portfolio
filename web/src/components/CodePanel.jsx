@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import Prism from 'prismjs';
 import { animated, useSpring, useSpringRef } from 'react-spring';
 
+Prism.manual = true;
 const escapeStr = (str) => str
   .replace(/&/g, '&amp;')
   .replace(/</g, '&lt;')
@@ -10,7 +11,7 @@ const escapeStr = (str) => str
   .replace(/'/g, '&#039;');
 
 export const CodePanel = ({
-  scrollRef, snippet, max, min = 0, children, className,
+  scrollRef, language, snippet, max, min = 0, children, className,
 }) => {
   const codeStr1 = useRef();
   const springRef = useSpringRef();
@@ -49,7 +50,7 @@ export const CodePanel = ({
       <div className="w-full lg:max-w-screen-md 2xl:max-w-xl h-40 lg:h-96 overflow-visible relative bg-gray-800 flex items-center justify-center pointer-events-auto">
         <div className="absolute w-full top-0">
           <pre className="bg-gray-800 m-0 code-block text-white w-full h-full">
-            <code ref={codeStr1} className="language-js w-full" />
+            <code ref={codeStr1} className={`language-${language} w-full`} />
           </pre>
         </div>
         <animated.div style={style} className="absolute top-0 w-full h-full rounded-lg bg-white p-1">

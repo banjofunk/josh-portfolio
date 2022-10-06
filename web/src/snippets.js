@@ -12,13 +12,10 @@ const react = `const App = props => {
 };
 `;
 
-const amplify = `$util.defaultIfNull($ctx.args.input, {})
-$util.defaultIfNull($ctx.stash.defaultValues, {})
-
-#set( $createdAt = $util.time.nowISO8601() )
-#set( $id = $util.defaultIfNull($ctx.args.input.get("id"), $util.autoId()) )
-#set( $orgId = $ctx.args.input.get("organizationId") )
-#set( $teamId = $ctx.args.input.get("teamId") )
+const amplify = `type ForecastRange {
+  max: String
+  min: String
+}
 `;
 
 const serverless = `test:

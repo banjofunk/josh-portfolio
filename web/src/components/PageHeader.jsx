@@ -6,6 +6,6 @@ export const PageHeader = ({ secondary }) => (
       <h1 className={`text-2xl lg:text-7xl font-medium ${secondary ? 'text-gray-800' : 'text-white'}`}>josh garner</h1>
       <h2 className="text-lg lg:text-2xl pr-2 text-sky-600">full-stack developer</h2>
     </div>
-    <Cloud className={`w-20 lg:w-52 ${secondary ? 'text-gray-800' : 'text-sky-800'}`} />
+    <Cloud className={`w-20 lg:w-52 ${secondary ? 'text-gray-800 opacity-90' : 'text-sky-800'}`} />
   </div>
 );

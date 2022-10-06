@@ -52,9 +52,8 @@ const App = () => {
           <div className="flex-1 h-full flex flex-col items-center py-2 lg:py-4 px-4">
             <animated.div style={titleStyle} className="z-50 w-screen h-0 overflow-visible pointer-events-none">
               <div className="z-30 h-screen w-full flex items-center justify-center">
-                <div style={{ backgroundImage: 'radial-gradient(var(--tw-gradient-stops))' }} className="rounded-full bg-transparent from-sky-900 via-gray-800 to-gray-800 text-center p-44">
-                  <div className="w-96 h-96 flex flex-col items-center justify-center">
-
+                <div className="bg-radial-gradient via-transparent from-sky-900">
+                  <div className="w-full max-w-sm flex flex-col items-center justify-center text-center">
                     <blockquote className="p-4 italic text-white quote text-xl opacity-75">
                       <p>Check out what Josh has been working on lately</p>
                     </blockquote>
@@ -65,7 +64,10 @@ const App = () => {
                 </div>
               </div>
             </animated.div>
-            <PageHeader />
+            <div className="w-full px-4">
+
+              <PageHeader />
+            </div>
             <div className="w-full flex-1 flex lg:items-center justify-center max-w-screen-2xl">
               <div className="w-full flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 space-x-0 2xl:space-x-4 2xl:-mt-44">
                 <div className="flex flex-col 2xl:w-2/3 lg:flex-row space-y-4 lg:space-y-0 space-x-0 lg:space-x-4">
@@ -107,8 +109,8 @@ const App = () => {
             </animated.div>
           </div>
           <animated.div style={style} className="w-full h-full flex items-center justify-center p-4 opacity-0">
-            <div className="w-full max-w-sm sm:max-w-screen-sm lg:max-w-screen-md bg-white rounded-full shadow p-1">
-              <div className="w-full bg-sky-900 rounded-full p-4">
+            <div className="w-full max-w-lg aspect-square bg-gray-800 rounded-full shadow p-1.5">
+              <div className="w-full h-full flex items-center bg-sky-900 rounded-full p-4">
                 <div className="w-full flex flex-col space-y-6 py-6 items-center justify-center">
                   <div className="w-full flex space-x-4 items-center justify-center">
                     <div className="rounded-full w-20 h-20 border-2 border-white overflow-hidden">
@@ -116,11 +118,11 @@ const App = () => {
                     </div>
                     <div className="block">
                       <p className="text-lg text-white leading-snug">Josh Garner</p>
-                      <p className="text-sm text-gray-400 leading-snug">senior software engineer</p>
+                      <p className="text-sm text-gray-300 leading-snug">senior software engineer</p>
                       <p className="text-sm text-sky-500 leading-snug">your company here</p>
                     </div>
                   </div>
-                  <div className="border-b-2 border-sky-600 rounded w-full max-w-xs h-0" />
+                  <div className="border-2 border-gray-800 rounded w-full max-w-xs h-0" />
                   <div className="flex w-full justify-center">
 
                     <div className="flex flex-col space-y-2 items-center justify-center">

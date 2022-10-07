@@ -4,7 +4,9 @@ import { BiChevronDown } from 'react-icons/bi';
 import {
   SiTailwindcss, SiAwsamplify, SiReact, SiGraphql, SiAmazonaws, SiServerless, SiAmazons3,
 } from 'react-icons/si';
-import { PageHeader, CodePanel, GitRepoCard } from './components';
+import {
+  CodePanel, ContactInfo, GitRepoCard, PageHeader,
+} from './components';
 import { snippets } from './snippets';
 
 const App = () => {
@@ -33,10 +35,6 @@ const App = () => {
     });
   };
 
-  const phone = window.atob('MzAzLTk0Ni0zNDM2');
-  const emailAddress = window.atob('Y2hyaXNAZXhwZWN0bGxjLmNvbQ==');
-  const emailLink = `mailto:${emailAddress}?subject=Interested in Josh Garner`;
-
   useEffect(() => {
     const ref = scrollRef.current;
     ref.addEventListener('scroll', listener);
@@ -54,7 +52,7 @@ const App = () => {
       <div style={{ height: '550vh' }} className="relative w-full min-h-screen">
         <div className="sticky top-0 w-full h-screen min-h-screen flex items-center justify-center bg-gray-800 shadow-lg">
           <div className="flex-1 h-full flex flex-col items-center py-2 lg:py-4 px-4">
-            <animated.div style={titleStyle} className="z-50 w-screen h-0 overflow-visible pointer-events-none">
+            <animated.div style={titleStyle} className="z-50 w-full max-w-screen h-0 overflow-visible pointer-events-none">
               <div className="z-30 h-screen w-full flex items-center justify-center">
                 <div className="bg-radial-gradient via-transparent from-sky-900">
                   <div className="w-full max-w-sm flex flex-col items-center justify-center text-center">
@@ -69,7 +67,6 @@ const App = () => {
               </div>
             </animated.div>
             <div className="w-full px-4">
-
               <PageHeader />
             </div>
             <div className="w-full flex-1 flex lg:items-center justify-center max-w-screen-2xl">
@@ -108,11 +105,11 @@ const App = () => {
         </div>
         <div className="absolute h-screen w-full bottom-0 bg-gray-800 shadow-2xl shadow-neutral-200 overflow-hidden from-sky-900 bg-gradient-to-b">
           <div className="w-full h-0 overflow-visible">
-            <animated.div style={secondaryStyle} className="w-full p-4">
+            <animated.div style={secondaryStyle} className="w-full py-2 lg:py-4 px-8">
               <PageHeader secondary />
             </animated.div>
           </div>
-          <animated.div style={style} className="w-full h-full flex items-center justify-center p-4 opacity-0">
+          <animated.div style={style} className="w-full h-full flex flex-col items-center justify-center p-4 opacity-0">
             <div className="w-full max-w-lg aspect-square bg-gray-800 rounded-full shadow p-1.5">
               <div className="w-full h-full flex items-center bg-sky-900 rounded-full p-4">
                 <div className="w-full flex flex-col space-y-6 py-6 items-center justify-center">
@@ -121,23 +118,13 @@ const App = () => {
                       <img src="/joshco.jpeg" alt="josh profile pic" className="w-full h-full" />
                     </div>
                     <div className="block">
-                      <p className="text-lg text-white leading-snug">Josh Garner</p>
-                      <p className="text-sm text-gray-300 leading-snug">senior software engineer</p>
-                      <p className="text-sm text-sky-500 leading-snug">your company here</p>
+                      <p className="text-lg lg:text-xl text-white leading-snug">Josh Garner</p>
+                      <p className="text-sm lg:text-base text-gray-300 leading-snug">senior software engineer</p>
+                      <p className="text-sm lg:text-base text-sky-500 leading-snug">your company here</p>
                     </div>
                   </div>
                   <div className="border-2 border-gray-800 rounded w-full max-w-xs h-0" />
-                  <div className="flex w-full justify-center">
-
-                    <div className="flex flex-col space-y-2 items-center justify-center">
-
-                      <img src="/expectTech.png" alt="josh profile pic" className="w-48" />
-                      <div className="flex flex-col space-y-2 pt-2 text-left">
-                        <a href={`tel:${phone}`} className="text-lg text-white">{`p: ${phone}`}</a>
-                        <a href={emailLink} className="text-lg text-white">{`e: ${emailAddress}`}</a>
-                      </div>
-                    </div>
-                  </div>
+                  <ContactInfo />
 
                 </div>
               </div>

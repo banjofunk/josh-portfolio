@@ -18,17 +18,16 @@ ${spacer}`;
 
 const amplify = `\
 # schema.graphql
-type ForecastResult {
-  adgroupType: String
-  reach: Int
+type Employee {
   salary: BigInt
+  status: String
+  reach: Int
 }
 
-type Forecast @aws_cognito_user_pools {
-  requestedAt: AWSTimestamp
-  createdAt: AWSTimestamp
-  impressions: Int
-  results: [ForecastResult]
+type Employer @aws_cognito_user_pools {
+  offerAt: AWSTimestamp
+  impressions: [String]
+  results: String
 }
 ${spacer}`;
 
@@ -44,9 +43,9 @@ test:
     - serverless-webpack
   provider:
     name: aws
+    stage: !Ref uponRequest
     runtime: "nodejs14.x"
     region: "us-east-1"
-    stage: test
 ${spacer}`;
 
 export const snippets = {

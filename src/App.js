@@ -77,15 +77,15 @@ const App = () => {
                       title="React - TailwindCSS"
                       link="https://github.com/banjofunk/josh-portfolio"
                       icons={[SiReact, SiTailwindcss, SiAwsamplify]}
-                      description="Here is the code for this very site! This page was written with ReactJS and TailwindCSS."
+                      description="The code for this very site! ReactJS / TailwindCS."
                     />
                   </CodePanel>
                   <CodePanel className="z-20" language="GraphQL" snippet={snippets.amplify} scrollRef={scrollRef} min={1} max={2}>
                     <GitRepoCard
                       title="Amplify - Appsync Resolvers"
-                      link="https://github.com/banjofunk/josh-portfolio"
+                      link="https://github.com/banjofunk/amplify-resolvers"
                       icons={[SiAwsamplify, SiAmazonaws, SiGraphql]}
-                      description="This repo contains several custom VTL resolvers including a geo indexing resolver (elasticsearch) and a gql subscription group auth strategy"
+                      description="This repo contains a few custom appsync (VTL) resolvers. elasticsearch  / geoJson / script aggregation"
                     />
                   </CodePanel>
                 </div>
@@ -93,9 +93,9 @@ const App = () => {
                   <CodePanel className="z-10" language="YAML" snippet={snippets.serverless} scrollRef={scrollRef} min={2} max={3}>
                     <GitRepoCard
                       title="Serverless - CloudFormation"
-                      link="https://github.com/banjofunk/josh-portfolio"
+                      link="https://github.com/banjofunk/serverless-resources"
                       icons={[SiServerless, SiAmazons3, SiAmazonaws]}
-                      description="This repo uses the serverless cli / CloudFormation to create various AWS resources and Lambdas"
+                      description="Uses serverless cli to create various AWS resources including an example using S3 Object Lambda"
                     />
                   </CodePanel>
                 </div>
@@ -123,9 +123,8 @@ const App = () => {
                       <p className="text-sm lg:text-base text-sky-500 leading-snug">your company here</p>
                     </div>
                   </div>
-                  <div className="border-2 border-gray-800 rounded w-full max-w-xs h-0" />
-                  <ContactInfo />
-
+                  {/* <div className="border-2 border-gray-800 rounded w-full max-w-xs h-0" />
+                  <ContactInfo /> */}
                 </div>
               </div>
             </div>

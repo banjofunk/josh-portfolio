@@ -1,19 +1,33 @@
 import { SiGithub } from 'react-icons/si';
 
+/**
+ * GitRepoCard component displays information about a GitHub repository
+ * Includes technology icons, title, description, and a link to view on GitHub
+ *
+ * @param {string} title - Repository title
+ * @param {Array} icons - Array of React icon components to display
+ * @param {string} link - GitHub repository URL
+ * @param {string} description - Repository description
+ */
 export const GitRepoCard = ({
   title, icons, link, description,
 }) => (
   <div className="w-full h-full flex flex-col items-center justify-center rounded-md bg-sky-900">
+    {/* Technology icons header - hidden on mobile */}
     <div className="w-full h-12 bg-sky-600 rounded-t-md hidden lg:flex justify-evenly items-center text-white">
       {icons.map((Icon) => (
         <Icon key={Icon?.name} className="text-white h-5 w-5" />
       ))}
     </div>
+
+    {/* Card content */}
     <div className="w-full flex-1 flex flex-col space-y-2 py-0 lg:py-4 px-4">
       <div className="w-full flex-1 flex flex-col pt-2 lg:pt-4 space-y-2 lg:space-y-4">
         <h2 className="text-base lg:text-xl font-semibold text-white">{title}</h2>
         <p className="text-sm lg:text-base text-white">{description}</p>
       </div>
+
+      {/* GitHub link button */}
       <div className="w-full h-12 flex items-center justify-center">
         <button
           type="button"

@@ -1,5 +1,12 @@
+/**
+ * Code snippets used in the CodePanel components
+ * These are displayed with scroll-based reveal animations
+ */
+
+// Spacer to add vertical padding to code snippets
 const spacer = '\n\n\n\n\n';
 
+// React/TailwindCSS example snippet
 const react = `\
 // App.js
 const App = props => {
@@ -16,22 +23,23 @@ const App = props => {
 };
 ${spacer}`;
 
+// GraphQL/Amplify schema example snippet
 const amplify = `\
 # schema.graphql
-type ForecastResult {
-  adgroupType: String
-  reach: Int
+type Employee {
   salary: BigInt
+  status: String
+  reach: Int
 }
 
-type Forecast @aws_cognito_user_pools {
-  requestedAt: AWSTimestamp
-  createdAt: AWSTimestamp
-  impressions: Int
-  results: [ForecastResult]
+type Employer @aws_cognito_user_pools {
+  offerAt: AWSTimestamp
+  impressions: [String]
+  results: String
 }
 ${spacer}`;
 
+// Serverless YAML configuration example snippet
 const serverless = `\
 # serverless.yml
 test:
@@ -44,9 +52,9 @@ test:
     - serverless-webpack
   provider:
     name: aws
+    stage: !Ref uponRequest
     runtime: "nodejs14.x"
     region: "us-east-1"
-    stage: test
 ${spacer}`;
 
 export const snippets = {

@@ -1,5 +1,10 @@
 import { Cloud } from './Cloud';
 
+/**
+ * PageHeader component displays the portfolio header with name and title
+ *
+ * @param {boolean} secondary - If true, uses dark text for light backgrounds
+ */
 export const PageHeader = ({ secondary }) => (
   <div className="w-full flex items-center justify-between p-4 pt-0 z-30">
     <div className="flex flex-col space-y-2 font-serif text-right">

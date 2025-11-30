@@ -70,10 +70,20 @@ export const CodePanel = ({
   });
 
   const style = useSpring({ opacity: 0, ref: springRef });
-
+  let panelHeight = (window.innerHeight - 220) / 2;
+  if (panelHeight < 160) {
+    panelHeight = 160;
+  }
+  if (panelHeight > 380) {
+    panelHeight = 380;
+  }
+  // if small screen, make it smaller
+  if (window.innerWidth < 768) {
+    panelHeight = 160;
+  }
   return (
     <div className={`flex-1 flex items-center justify-center pointer-events-auto ${className}`}>
-      <div className="w-full lg:max-w-screen-md 2xl:max-w-xl h-40 lg:h-96 overflow-visible relative bg-gray-800 flex items-center justify-center pointer-events-auto">
+      <div className="w-full lg:max-w-screen-md 2xl:max-w-xl overflow-visible relative bg-gray-800 flex items-center justify-center pointer-events-auto" style={{ height: panelHeight }}>
         {/* Code snippet display */}
         <div className="absolute w-full top-0">
           <pre className="bg-gray-800 m-0 code-block text-white w-full h-full">

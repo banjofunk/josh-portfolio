@@ -57,8 +57,25 @@ test:
     region: "us-east-1"
 ${spacer}`;
 
+// Markdown example snippet for ai-markdown project
+const markdown = `\
+# AI Markdown Notes
+
+## Features
+- **AI-Powered Analysis**: Get insights from your notes
+- **Clean Interface**: Simple, distraction-free writing
+- **Responsive Design**: Works on all devices
+
+\`\`\`javascript
+// Example usage
+const note = analyzeNote(content);
+console.log(note.insights);
+\`\`\`
+${spacer}`;
+
 export const snippets = {
   react,
   serverless,
   amplify,
+  markdown,
 };

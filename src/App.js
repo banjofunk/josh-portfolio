@@ -2,7 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import { animated, useSpring, useSpringRef } from 'react-spring';
 import { BiChevronDown } from 'react-icons/bi';
 import {
-  SiTailwindcss, SiAwsamplify, SiReact, SiGraphql, SiAmazonaws, SiServerless, SiAmazons3,
+  SiTailwindcss, SiAwsamplify, SiReact, SiGraphql,
+  SiAmazonaws, SiServerless, SiAmazons3, SiMarkdown,
 } from 'react-icons/si';
 import {
   CodePanel, GitRepoCard, PageHeader,
@@ -69,7 +70,7 @@ const App = () => {
     // Main scroll container
     <div ref={scrollRef} className="w-full h-screen overflow-scroll">
       {/* Extended height container (550vh) to enable scroll-based animations */}
-      <div style={{ height: '550vh' }} className="relative w-full min-h-screen">
+      <div style={{ height: '640vh' }} className="relative w-full min-h-screen">
 
         {/* Sticky header section that stays in view while scrolling */}
         <div className="sticky top-0 w-full h-screen min-h-screen flex items-center justify-center bg-gray-800 shadow-lg">
@@ -98,43 +99,47 @@ const App = () => {
 
             {/* Project showcase section with code panels and repository cards */}
             <div className="w-full flex-1 flex lg:items-center justify-center max-w-screen-2xl">
-              <div className="w-full flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 space-x-0 2xl:space-x-4 2xl:-mt-44">
+              {/* Grid layout: mobile (1 col), tablet (2x2), desktop (2x2) */}
+              <div className="w-full grid grid-cols-1 lg:grid-cols-2 lg:gap-4 2xl:-mt-44">
+                {/* React/TailwindCSS Portfolio Project */}
+                <CodePanel className="z-40" language="javascript" snippet={snippets.react} scrollRef={scrollRef} max={1}>
+                  <GitRepoCard
+                    title="React - TailwindCSS"
+                    link="https://github.com/banjofunk/josh-portfolio"
+                    icons={[SiReact, SiTailwindcss, SiAwsamplify]}
+                    description="The code for this very site! ReactJS / TailwindCS."
+                  />
+                </CodePanel>
 
-                {/* Left column - React and Amplify projects */}
-                <div className="flex flex-col 2xl:w-2/3 lg:flex-row space-y-4 lg:space-y-0 space-x-0 lg:space-x-4">
-                  {/* React/TailwindCSS Portfolio Project */}
-                  <CodePanel className="z-30" language="javascript" snippet={snippets.react} scrollRef={scrollRef} max={1}>
-                    <GitRepoCard
-                      title="React - TailwindCSS"
-                      link="https://github.com/banjofunk/josh-portfolio"
-                      icons={[SiReact, SiTailwindcss, SiAwsamplify]}
-                      description="The code for this very site! ReactJS / TailwindCS."
-                    />
-                  </CodePanel>
+                {/* Amplify Resolvers Project */}
+                <CodePanel className="z-30" language="GraphQL" snippet={snippets.amplify} scrollRef={scrollRef} min={1} max={2}>
+                  <GitRepoCard
+                    title="Amplify - Appsync Resolvers"
+                    link="https://github.com/banjofunk/amplify-resolvers"
+                    icons={[SiAwsamplify, SiAmazonaws, SiGraphql]}
+                    description="This repo contains a few custom appsync (VTL) resolvers. elasticsearch  / geoJson / script aggregation"
+                  />
+                </CodePanel>
 
-                  {/* Amplify Resolvers Project */}
-                  <CodePanel className="z-20" language="GraphQL" snippet={snippets.amplify} scrollRef={scrollRef} min={1} max={2}>
-                    <GitRepoCard
-                      title="Amplify - Appsync Resolvers"
-                      link="https://github.com/banjofunk/amplify-resolvers"
-                      icons={[SiAwsamplify, SiAmazonaws, SiGraphql]}
-                      description="This repo contains a few custom appsync (VTL) resolvers. elasticsearch  / geoJson / script aggregation"
-                    />
-                  </CodePanel>
-                </div>
+                {/* Serverless CloudFormation Project */}
+                <CodePanel className="z-20" language="YAML" snippet={snippets.serverless} scrollRef={scrollRef} min={2} max={3}>
+                  <GitRepoCard
+                    title="Serverless - CloudFormation"
+                    link="https://github.com/banjofunk/serverless-resources"
+                    icons={[SiServerless, SiAmazons3, SiAmazonaws]}
+                    description="Uses serverless cli to create various AWS resources including an example using S3 Object Lambda"
+                  />
+                </CodePanel>
 
-                {/* Right column - Serverless project */}
-                <div className="flex flex-col 2xl:flex-1 border-0">
-                  {/* Serverless CloudFormation Project */}
-                  <CodePanel className="z-10" language="YAML" snippet={snippets.serverless} scrollRef={scrollRef} min={2} max={3}>
-                    <GitRepoCard
-                      title="Serverless - CloudFormation"
-                      link="https://github.com/banjofunk/serverless-resources"
-                      icons={[SiServerless, SiAmazons3, SiAmazonaws]}
-                      description="Uses serverless cli to create various AWS resources including an example using S3 Object Lambda"
-                    />
-                  </CodePanel>
-                </div>
+                {/* AI Markdown Project */}
+                <CodePanel className="z-10" language="markdown" snippet={snippets.markdown} scrollRef={scrollRef} min={3} max={4}>
+                  <GitRepoCard
+                    title="AI Markdown - Note Taking"
+                    link="https://github.com/banjofunk/ai-markdown"
+                    icons={[SiMarkdown, SiReact]}
+                    description="AI-powered markdown note-taking application with intelligent analysis and insights."
+                  />
+                </CodePanel>
               </div>
             </div>
           </div>

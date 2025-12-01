@@ -2,7 +2,7 @@
 
 A modern, interactive portfolio website showcasing my software engineering projects and skills. Built with React and TailwindCSS, featuring scroll-based animations and a unique code-reveal interface.
 
-🔗 **[View Live Site](https://joshgarner.dev)**
+🔗 **[View Live Site](https://joshgarnerdev.com)**
 
 ## ✨ Features
 
@@ -109,6 +109,7 @@ Repository information cards featuring:
 1. **React + TailwindCSS Portfolio** - This very site! ([GitHub](https://github.com/banjofunk/josh-portfolio))
 2. **Amplify AppSync Resolvers** - Custom VTL resolvers for GraphQL ([GitHub](https://github.com/banjofunk/amplify-resolvers))
 3. **Serverless CloudFormation** - AWS infrastructure with Serverless Framework ([GitHub](https://github.com/banjofunk/serverless-resources))
+4. **AI Markdown** - AI Markdown ([GitHub](https://github.com/banjofunk/ai-markdown))
 
 ## 🤝 Contributing
 
@@ -124,7 +125,7 @@ This project is open source and available under the [MIT License](LICENSE).
 Senior Software Engineer
 
 - GitHub: [@banjofunk](https://github.com/banjofunk)
-- Portfolio: [joshgarner.dev](https://joshgarner.dev)
+- Portfolio: [joshgarnerdev.com](https://joshgarnerdev.com)
 
 ---
 
